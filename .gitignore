@@ -1,32 +1,66 @@
-# Prerequisites
-*.d
+#include <iostream>
+#include <windows.h>
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+using namespace std;
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+//aqui se toma la foto de tu loli desnuda
+void foto (void){
+	keybd_event(44,0,0,0);
+	cout<<"FOTO TOMADA"<<endl;
+	system("pause");
+	
+}
+int main() {
+	int h,m,s,intervalo;
+	int D;
+	
+	principio:
+	system("cls");
+	cout<<"ingrese intervalo para tomar fotos"<<endl;
+	cout<<"1- segundos"<<endl;
+	cout<<"2- minutos"<<endl;
+	cout<<"3- Horas"<<endl;
+	cin>>D;
+	
+	system("cls");
+	
+	if(D==1){
+		cout<<"ingrese intervalos de segundos"<<endl;
+		cin>>intervalo;
+	}else if(D==2){
+		cout<<"ingrese intervalos de minutos"<<endl;
+		cin>>intervalo;
+		intervalo=intervalo*60;
+	}else if(D==3){
+		cout<<"ingrese intervalos de minutos"<<endl;
+		cin>>intervalo;
+		intervalo=intervalo*3600;
+	}else{
+		cout<<"Por favor ingrese un valor valido"<<endl;
+		system("pause");
+		char D;
+		goto principio;//aqui se devuelven si se equivocan al ingresar datos
+	}
+	system("cls");
+	
+  //este es el cronometro
+	for(h=0; h<12; h++){
+	  for(m =0; m<60; m++){
+		  for(s=0; s<60; s++){
+			  system("cls");
+			  cout <<"\t\t\t\t" <<h << ":" << m << ":" << s << endl;
+			  Sleep(1000); 
+			
+		  if (s==intervalo){
+		   system("cls");
+	    	foto();//aqui va a tomar la foto
+    
+		  goto principio;//aqui se devuelve el principio del codigo
+			}
+		}
+	}
+}
+	
+	
+	return 0;
+}
